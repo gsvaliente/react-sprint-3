@@ -301,8 +301,16 @@ describe('Function "moviesAverageByCategory"', () => {
   it('should be declared', () => {
     expect(typeof moviesAverageByCategory).toBe('function');
   });
+  it('should return undefined if no array is given', () => {
+    expect(moviesAverageByCategory()).toBe(undefined);
+  });
+  it('should return undefined if no genre is given', () => {
+    const arr = [{ title: 'abc', genre: '123' }];
+    expect(moviesAverageByCategory(arr)).toBe(undefined);
+  });
   it('should return a number', () => {
-    expect(typeof moviesAverageByCategory(movies)).toBe('number');
+    const arr = [{ title: 'abc', genre: '123' }];
+    expect(typeof moviesAverageByCategory(arr, '123')).toBe('number');
   });
   it('should return NaN if category is not found', () => {
     const arr = [{ title: 'abc', genre: '123' }];
